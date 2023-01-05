@@ -7,15 +7,15 @@ pub mod actix;
 #[cfg(feature = "axum")]
 pub mod axum;
 
-#[cfg_attr(
-    docsrs,
-    doc(cfg(any(
-        feature = "http-binding",
-    )))
-)]
-#[cfg(any(
-    feature = "http-binding",
-))]
+// #[cfg_attr(
+//     docsrs,
+//     doc(cfg(any(
+//         feature = "http-binding",
+//     )))
+// )]
+// #[cfg(any(
+//     feature = "http-binding",
+// ))]
 pub mod http;
 
 pub(crate) static CLOUDEVENTS_JSON_HEADER: &str = "application/cloudevents+json";
