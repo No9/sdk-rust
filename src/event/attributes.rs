@@ -254,17 +254,9 @@ impl Attributes {
 
 #[cfg(not(target_arch = "wasm32"))]
 pub(crate) fn default_hostname() -> Url {
-    Url::parse(
-        format!(
-            "http://{}",
-            hostname::get()
-                .ok()
-                .and_then(|s| s.into_string().ok())
-                .unwrap_or_else(|| "localhost".to_string())
-        )
-        .as_ref(),
-    )
-    .unwrap()
+    use std::str::FromStr;
+
+    Url::from_str("http://localhost").unwrap()
 }
 
 #[cfg(all(target_arch = "wasm32", target_os = "unknown"))]

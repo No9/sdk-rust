@@ -11,45 +11,12 @@ pub mod axum;
     docsrs,
     doc(cfg(any(
         feature = "http-binding",
-        feature = "actix",
-        feature = "warp",
-        feature = "reqwest",
-        feature = "axum",
-        feature = "poem"
     )))
 )]
 #[cfg(any(
     feature = "http-binding",
-    feature = "actix",
-    feature = "warp",
-    feature = "reqwest",
-    feature = "axum",
-    feature = "poem"
 ))]
 pub mod http;
-#[cfg_attr(docsrs, doc(cfg(feature = "nats")))]
-#[cfg(feature = "nats")]
-pub mod nats;
-#[cfg_attr(docsrs, doc(cfg(feature = "poem")))]
-#[cfg(feature = "poem")]
-pub mod poem;
-#[cfg_attr(docsrs, doc(cfg(feature = "rdkafka")))]
-#[cfg(feature = "rdkafka")]
-pub mod rdkafka;
-#[cfg_attr(docsrs, doc(cfg(feature = "reqwest")))]
-#[cfg(feature = "reqwest")]
-pub mod reqwest;
-#[cfg_attr(docsrs, doc(cfg(feature = "warp")))]
-#[cfg(feature = "warp")]
-pub mod warp;
-
-#[cfg(feature = "rdkafka")]
-pub(crate) mod kafka {
-    pub static SPEC_VERSION_HEADER: &str = "ce_specversion";
-    pub fn header_prefix(name: &str) -> String {
-        super::header_prefix("ce_", name)
-    }
-}
 
 pub(crate) static CLOUDEVENTS_JSON_HEADER: &str = "application/cloudevents+json";
 pub(crate) static CLOUDEVENTS_BATCH_JSON_HEADER: &str = "application/cloudevents-batch+json";
