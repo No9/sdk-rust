@@ -1,21 +1,14 @@
 //! Provides protocol binding implementations for [`crate::Event`].
 
-#[cfg_attr(docsrs, doc(cfg(feature = "actix")))]
-#[cfg(feature = "actix")]
-pub mod actix;
-#[cfg_attr(docsrs, doc(cfg(feature = "axum")))]
-#[cfg(feature = "axum")]
-pub mod axum;
-
-// #[cfg_attr(
-//     docsrs,
-//     doc(cfg(any(
-//         feature = "http-binding",
-//     )))
-// )]
-// #[cfg(any(
-//     feature = "http-binding",
-// ))]
+#[cfg_attr(
+    docsrs,
+    doc(cfg(any(
+        feature = "http-binding",
+    )))
+)]
+#[cfg(any(
+    feature = "http-binding",
+))]
 pub mod http;
 
 pub(crate) static CLOUDEVENTS_JSON_HEADER: &str = "application/cloudevents+json";

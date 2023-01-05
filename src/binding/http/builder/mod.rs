@@ -1,4 +1,4 @@
-// #[cfg(feature = "http-binding")]
+#[cfg(feature = "hyper_wasi")]
 pub mod adapter;
 
 use crate::message::Result;
